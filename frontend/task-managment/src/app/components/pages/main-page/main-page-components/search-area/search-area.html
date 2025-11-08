@@ -1,0 +1,23 @@
+<div class="container" (click)="$event.stopPropagation()">
+    @for(project of projectsData; track project ; let projectIdx = $index)
+    {
+        @if(projectIdx === 0 && shownFirstFalse()){}
+        @if(isFiltered(project.id))
+        {
+            @for(taskId of project.tasks.keys(); track taskId;)
+            {
+                @if(project.tasks.get(taskId)?.title?.toUpperCase()?.includes(searchInput.toUpperCase()))
+                {
+                    @if(checkAndMarkShown()){<hr>}
+                    <!-- single task -->
+                     <div class="item row" (click)="currTask.emit(project.tasks.get(taskId))" (load)="shownFirst = true">
+                     <span class="task">{{project.tasks.get(taskId)?.title}}</span>
+                     <app-type-indicator [projectColor]="project.headerColor"></app-type-indicator>
+                     <span class="type">{{project.name}}</span>
+                     </div>
+                    <!--  -->
+                }
+            }
+        }
+    }
+</div>

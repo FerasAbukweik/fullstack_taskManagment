@@ -1,0 +1,30 @@
+<form [formGroup]="toAdd">
+  <div class="container column" (click)="$event.stopPropagation()">
+    <span class="header-text">Add Project</span>
+    <span class="name-text">Name</span>
+    <input type="text" class="name" formControlName="name" />
+    <span class="reqired nameReq" [class.showreq]="showReqName" (click)="showReqName = false"
+      >*Name Is Required</span
+    >
+    <span class="color-text">Color</span>
+    <input type="color" class="color" formControlName="color" />
+    <span class="reqired colorReq" [class.showreq]="showReqColor" (click)="showReqColor = false"
+      >*Color Is Required</span
+    >
+    <div class="row">
+      <button class="cancel-button button" type="button" (click)="hideThisMessage.emit(false)">
+        Cancel
+      </button>
+      <button class="add-button button" type="button" (click)="manageAddBtn()">Add</button>
+    </div>
+  </div>
+</form>
+
+<!-- show confirm component -->
+
+@if(showConfirmAddMessage) {
+<app-confirmation-message
+  [toShowData]="confirmAddMessageData"
+  (isConfirmed)="manageAddMessage($event)"
+></app-confirmation-message>
+}

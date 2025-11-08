@@ -1,0 +1,84 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 101;
+}
+
+form {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.container.column {
+  flex: 1;
+  margin: 0 50px;
+  background-color: white;
+  max-width: 500px;
+  height: 400px;
+  padding: 25px;
+}
+
+.header-text {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+input {
+  height: 37px;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.4rem;
+  padding: 0 10px;
+  font-size: 1.2rem;
+}
+.row {
+  margin-top: auto;
+  margin-left: auto;
+}
+
+.cancel-button {
+  background-color: #d7d7da;
+  height: 37px;
+  width: 80px;
+  font-size: 1.1rem;
+}
+.add-button {
+  background-color: #169e11ff;
+  height: 37px;
+  width: 80px;
+  font-size: 1.1rem;
+  margin-left: 15px;
+}
+
+.title-text,
+.color-text {
+  font-size: 1.2rem;
+}
+
+.reqired {
+  color: red;
+  visibility: hidden;
+}
+.description-text {
+  margin-top: 5px;
+}
+.goal-date-text {
+  margin-top: 23px;
+}
+
+.showreq {
+  visibility: visible;
+}
+@media (min-width: 600px) {
+  .container.column {
+    height: 450px;
+  }
+}

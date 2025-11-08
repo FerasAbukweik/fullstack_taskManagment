@@ -1,0 +1,42 @@
+<div class="container">
+  <!-- Login to Your Account text -->
+  <pre class="login-text">
+Login to Your
+Account</pre
+  >
+  <form [formGroup]="inputData">
+    <!-- input -->
+    <label for="email">email</label>
+    <input
+      type="text"
+      id="email"
+      [class.reqired-input]="showReqiredEmail"
+      (click)="showReqiredEmail = false"
+      formControlName="email"
+    />
+
+    <span class="reqired" [class.showReqired]="showReqiredEmail">*this filed is reqired</span>
+    <!--  -->
+
+    <!-- input -->
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      [class.reqired-input]="showReqiredPassword"
+      (click)="showReqiredPassword = false"
+      formControlName="password"
+    />
+
+    <span class="reqired" [class.showReqired]="showReqiredPassword">*this filed is reqired</span>
+    <!--  -->
+    <button class="login-button" (click)="login()">Login</button>
+  </form>
+  <button class="signUp-button" (click)="navigateToSignUpPage()">Sign Up</button>
+</div>
+
+<!-- show error message -->
+
+@if(message != '') {
+<app-message [message]="message" (hideThisMessage)="message = ''"></app-message>
+}

@@ -1,0 +1,29 @@
+<form [formGroup]="toAdd">
+  <div class="container column" (click)="$event.stopPropagation()">
+    <span class="header-text">Add Task</span>
+
+    <span class="title-text">Title</span>
+    <input type="text" formControlName="title" />
+    <span class="reqired" [class.showreq]="showReqTitle">*Title is required</span>
+
+    <span class="description-text">Description</span>
+    <input type="text" formControlName="description" />
+
+    <span class="goal-date-text">Goal Date</span>
+    <input type="date" formControlName="GoalDate" />
+
+    <div class="row">
+      <button type="button" class="button cancel-button" (click)="hideThisMessage.emit(false)">
+        Cancel
+      </button>
+      <button type="button" class="button add-button" (click)="manageAddBtn()">Add</button>
+    </div>
+  </div>
+</form>
+
+@if(showConfirmAddMessage) {
+<app-confirmation-message
+  [toShowData]="confirmAddMessageData"
+  (isConfirmed)="manageAddMessage($event)"
+></app-confirmation-message>
+}

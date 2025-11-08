@@ -1,0 +1,17 @@
+<form [formGroup]="chosenOptions!">
+  <div class="container column" (click)="$event.stopPropagation()">
+    @for (nameKey of namesKeys; track nameKey;) {
+    <!-- option -->
+    <div class="row">
+      <input
+        type="checkbox"
+        class="checkbox"
+        id="{{ nameKey }}"
+        formControlName="{{ nameKey.toString() }}"
+        (ngModelChange)="returnData()"
+      />
+      <label class="item" for="{{ nameKey }}">{{ projectsNames.get(nameKey) }}</label>
+    </div>
+    }
+  </div>
+</form>

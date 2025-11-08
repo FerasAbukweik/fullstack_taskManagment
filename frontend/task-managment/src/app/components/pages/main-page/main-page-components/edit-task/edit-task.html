@@ -1,0 +1,69 @@
+<form [formGroup]="SelectedOptions">
+  <div class="container column" (click)="$event.stopPropagation()">
+    <!-- message header -->
+    <div class="row header-row">
+      <span class="header-text">{{ SelectedOptions.get('title')?.value }}</span>
+      <button class="delete-button button" type="button" (click)="showConfirmDeleteMessage = true">
+        Delete
+      </button>
+    </div>
+    <!--  -->
+    <!-- input data -->
+    <label for="task-name">Task Name</label>
+    <input type="text" id="task-name" class="type-input" formControlName="title" />
+    <div class="row">
+      <div class="column">
+        <label for="start-data">Start Date</label>
+        <input
+          type="date"
+          class="date"
+          id="start-data"
+          disabled
+          value="{{ currTask.createdAt | date : 'yyyy-MM-dd' }}"
+        />
+      </div>
+      <div class="column">
+        <label for="goal-data">Goal Date</label>
+        <input type="date" class="date" id="goal-data" formControlName="goalDate" />
+      </div>
+    </div>
+    <label for="options">Type</label>
+    <select class="options" id="options" formControlName="project">
+      @for(nameKey of projectsNames.keys(); track nameKey;) {
+      <option value="{{ nameKey }}">{{ projectsNames.get(nameKey) }}</option>
+      }
+    </select>
+    <!--  -->
+    @if(currTask.updatedAt) {
+    <span class="updatedAt">Updated At: {{ currTask.updatedAt | date : 'dd/MM/yyyy' }}</span>
+    }
+    <!-- buttons row -->
+    <div class="footer-row">
+      <button class="cancel-button button" type="button" (click)="hideThisMessage.emit(true)">
+        Cancel
+      </button>
+      <button class="edit-button button" type="button" (click)="showConfirmEditMessage = true">
+        Edit
+      </button>
+    </div>
+    <!--  -->
+  </div>
+</form>
+
+<!-- show edit conponent -->
+
+@if(showConfirmDeleteMessage) {
+<app-confirmation-message
+  [toShowData]="confirmDeleteMessageData"
+  (isConfirmed)="manageDeleteMessage($event)"
+></app-confirmation-message>
+}
+
+<!-- show confirm component -->
+
+@if(showConfirmEditMessage) {
+<app-confirmation-message
+  [toShowData]="confirmEditMessageData"
+  (isConfirmed)="manageEditMessage($event)"
+></app-confirmation-message>
+}

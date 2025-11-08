@@ -1,0 +1,20 @@
+<div class="container column" (click)="$event.stopPropagation()">
+  <textarea class="description" id="description" [(ngModel)]="description"></textarea>
+  <div class="row">
+    <button class="cancel-button button" type="button" (click)="hideThisMessage.emit(true)">
+      Cancel
+    </button>
+    <button class="edit-button button" type="button" (click)="showConfirmEditMessage = true">
+      Edit
+    </button>
+  </div>
+</div>
+
+<!-- show confirm component -->
+
+@if(showConfirmEditMessage) {
+<app-confirmation-message
+  [toShowData]="confirmEditMessageData"
+  (isConfirmed)="manageEditMessage($event)"
+></app-confirmation-message>
+}

@@ -1,0 +1,188 @@
+:host {
+  display: block;
+  padding-top: 0;
+  height: 100%;
+  margin-right: 25px;
+}
+.searchIcon,
+.Task-Managment-text,
+.add-project-btn,
+.container.column {
+  margin-left: 25px !important;
+}
+.main {
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.main-header {
+  padding: 25px 0 10px 0;
+  position: fixed;
+  z-index: 100;
+  gap: 10px;
+  width: calc(100%);
+  background-color: white;
+}
+.searchIcon {
+  margin-right: 10px;
+  font-size: 1.4rem;
+  color: #878e94;
+}
+.container.search-input {
+  border: none;
+  text-align: start;
+  padding-left: 15px;
+  cursor: text;
+  font-size: 1rem;
+  width: 100%;
+}
+.search-input:focus {
+  border: none;
+  outline: none;
+}
+.container.search-input::after {
+  flex: 1;
+}
+
+.search-text {
+  color: #878e94;
+}
+.Task-Managment-text {
+  font-size: 2rem;
+  font-weight: bold;
+  display: block;
+  margin-top: 88px;
+}
+.row.body-row {
+  flex: 1;
+  align-items: start;
+}
+.container.column {
+  width: 100%;
+  position: relative;
+  padding-top: 58px;
+  gap: 10px;
+  max-width: 350px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.1);
+}
+.project-header {
+  position: absolute;
+  width: 100%;
+  padding: 5px;
+  padding-left: 20px;
+  top: 0;
+  left: 0;
+  border-radius: 0.6rem 0.6rem 0 0;
+}
+.header-text {
+  flex: 1;
+  text-align: left;
+  font-size: 1.2rem;
+}
+.add-task-btn {
+  font-size: 2rem;
+  margin-right: 6px;
+  cursor: pointer;
+}
+.container.column .container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.state-checkBox {
+  margin-top: 10px;
+  margin-right: auto;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #d2d7da;
+  border-radius: 50%;
+  box-shadow: 0 0 1px 1px #d2d7da;
+  cursor: pointer;
+}
+
+.state-checkBox:checked {
+  background-color: #c2dfff;
+}
+
+.search-container {
+  min-width: 150px;
+  position: relative;
+  width: 100%;
+  margin-right: auto;
+}
+.filter-button {
+  position: absolute;
+  border: none;
+  top: 10px;
+  right: 20px;
+  color: #878e94;
+}
+.filter-button:hover {
+  cursor: pointer;
+}
+
+.month {
+  margin-right: 25px;
+}
+app-filter-options {
+  position: absolute;
+  top: 48px;
+  left: calc(100% - 40px);
+}
+
+app-search-area {
+  position: fixed;
+  top: 80px;
+  left: 68px;
+  width: calc(100% - 130px);
+  max-width: 596px;
+  z-index: 101;
+}
+
+.add-project-btn {
+  background: white;
+  color: #2e2e2e;
+  border: none;
+  width: fit-content;
+  padding: 12px 22px;
+  margin: 30px 0;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.1);
+}
+
+.add-project-btn:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.delete-icon {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.task {
+  flex: 1;
+}
+
+@media (min-width: 500px) {
+  .search-container {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 500px) {
+  .row.body-row {
+    flex-wrap: wrap;
+  }
+  .container.column {
+    height: fit-content;
+    padding-bottom: 15px;
+    max-width: 500px;
+  }
+}

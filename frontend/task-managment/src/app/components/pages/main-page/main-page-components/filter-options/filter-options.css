@@ -1,0 +1,33 @@
+.container.column {
+  max-width: 200px;
+  gap: 5px;
+  color: rgb(114, 114, 114);
+  background-color: white;
+  box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.1);
+}
+.row {
+  gap: 10px;
+}
+.checkbox {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #d2d7da;
+  background: #f0f0f0;
+  border-radius: 50%;
+}
+
+.checkbox:checked {
+  background: #c2dfff;
+}
+
+.item,
+.checkbox {
+  cursor: pointer;
+}
+
+.item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

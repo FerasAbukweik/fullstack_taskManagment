@@ -1,0 +1,110 @@
+<div class="main column" (click)="closeAll()">
+  <div class="row main-header">
+    <label for="search">
+      <span class="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </label>
+    <div class="search-container">
+      <input
+        type="text"
+        class="container search-input"
+        id="search"
+        [(ngModel)]="searchInput"
+        (ngModelChange)="showFilterOptions = false"
+        placeholder="Search"
+        (click)="showFilterOptions = false; $event.stopPropagation()"
+      />
+      <button class="filter-button" (click)="toggleShowFilterOptions(); $event.stopPropagation()">
+        <i class="fa-solid fa-filter"></i>
+      </button>
+      @if(showFilterOptions) {
+      <app-filter-options
+        [projectsNames]="projectsNames"
+        [prevOptions]="selectedFilterOptions"
+        (selected)="selectedFilterOptions = $event"
+      ></app-filter-options>
+      }
+    </div>
+
+    <span class="container">Today</span>
+    <span class="container">Week</span>
+    <span class="container month">Month</span>
+  </div>
+
+  <span class="Task-Managment-text">Task Managment</span>
+  <button class="add-project-btn" (click)="showAddProject = true">+ Add Project</button>
+
+  <div class="row body-row">
+    @for(projectId of projectKeys; track projectId) {
+    <div class="container column">
+      <div
+        class="project-header row"
+        [style.background-color]="projectsData.get(projectId)?.headerColor ?? 'red'"
+      >
+        <span class="header-text">{{ projectsData.get(projectId)?.name ?? '' }}</span>
+        <span class="delete-icon" (click)="currProject = projectId; showConfirmDeleteProject = true"
+          ><i class="fa-solid fa-trash-can"></i
+        ></span>
+        <span class="add-task-btn" (click)="currProject = projectId; showAddTask = true">+</span>
+      </div>
+
+      @for(task of projectsData.get(projectId)?.tasks?.values() ?? []; track task) {
+      <div class="container" (click)="showDescription = true; currTask = task">
+        <div class="row">
+          <span class="task">{{ task.title }}</span>
+          <span
+            class="edit-icon"
+            (click)="$event.stopPropagation(); currTask = task; showEditTasks = true"
+            ><i class="fa-solid fa-pencil"></i
+          ></span>
+        </div>
+        <input
+          type="checkbox"
+          class="state-checkBox"
+          [(ngModel)]="task.mark"
+          (ngModelChange)="toggleStatus(projectId, task.id)"
+          (click)="$event.stopPropagation(); toggleStatus(projectId, task.id)"
+        />
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>
+
+@if(searchInput != "") {
+<app-search-area
+  [searchInput]="searchInput"
+  [projectsData]="projectsDataArray"
+  [latestFiltered]="selectedFilterOptions"
+  (currTask)="currTask = $event; showEditTasks = true"
+></app-search-area>
+} @if(showEditTasks) {
+<app-edit-task
+  [projectsNames]="projectsNames"
+  [currTask]="currTask!"
+  (hideThisMessage)="showEditTasks = false"
+  (UpdateData)="updateTask($event)"
+  (startDelete)="deleteTask()"
+  (click)="showEditTasks = false"
+></app-edit-task>
+} @if(showAddProject) {
+<app-add-project
+  (hideThisMessage)="showAddProject = false"
+  (toAddData)="addProject($event)"
+></app-add-project>
+} @if(showAddTask) {
+<app-add-task (hideThisMessage)="showAddTask = false" (toAddData)="addTask($event)"></app-add-task>
+} @if(messageToShow != "") {
+<app-message (hideThisMessage)="messageToShow = ''" [message]="messageToShow"></app-message>
+} @if(showConfirmDeleteProject) {
+<app-confirmation-message
+  [toShowData]="confirmDeleteProjectData"
+  (isConfirmed)="manageConfirmDeleteMessage($event)"
+></app-confirmation-message>
+} @if(showDescription) {
+<app-edit-discription
+  (hideThisMessage)="showDescription = false"
+  (outDescription)="updateDescription($event)"
+  [description]="currTask?.description ?? ''"
+></app-edit-discription>
+}
