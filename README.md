@@ -4,19 +4,9 @@ Organize projects and their tasks in an Angular workspace backed by an ASP.NET C
 
 [![.NET 8](https://img.shields.io/badge/.NET-8-512BD4)](https://dotnet.microsoft.com/) [![Angular 20](https://img.shields.io/badge/Angular-20-DD0031)](https://angular.dev/)
 
-## Demo and screenshots
+## LinkedIn walkthrough cover
 
-<!-- TODO: add public live demo URL -->
-Hosted demo pending.
-
-Capture these views using demo data:
-
-- a populated project with its task list
-  <!-- TODO: add screenshot of a populated project with its task list -->
-- the task editor showing assignment and progress fields
-  <!-- TODO: add screenshot of the task editor showing assignment and progress fields -->
-- a filtered task list with several statuses
-  <!-- TODO: add screenshot of a filtered task list with several statuses -->
+![Cover frame from the original LinkedIn Task Management walkthrough](docs/screenshots/linkedin-walkthrough-cover.jpg)
 
 ## Key features
 
@@ -153,13 +143,6 @@ frontend/task-managment/     # Angular pages, services, guard and interceptor
 
 Open [Swagger UI](https://localhost:44362/swagger/index.html) in Development.
 The API groups cover login, user registration, projects and task operations.
-
-## Known limitations and roadmap
-
-- Move signing configuration out of source and harden credential and token handling.
-- Review write endpoints for consistent per-resource authorization before deployment.
-- Add backend tests for authentication, ownership and task state changes.
-- Add a configurable frontend API base URL and paginate the dashboard response.
 
 ## Author
 
