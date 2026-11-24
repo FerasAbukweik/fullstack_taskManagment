@@ -81,6 +81,12 @@ look for business and access rules.
 
 ## Getting started
 
+> [!IMPORTANT]
+> The API currently fails to compile with CS1056 at
+> [`TaskManager/Program.cs`, line 26](TaskManager/Program.cs#L26). The Angular
+> build succeeds. API startup, database migrations and sign-in are blocked
+> until the source is corrected.
+
 Use the .NET 8 SDK or a newer SDK that can target .NET 8, a .NET 8 runtime,
 SQL Server and EF Core CLI 9.x. Use Node.js 22.12+ on 22.x or compatible 24.x
 with npm. Chrome is needed for the Headless test command.
